@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopify Email Funnel Strategy for Europe & USA</title>
+  <meta name="description" content="Професійна стратегія email-воронки для Shopify брендів у США та Європі: структура, флоу, приклади листів, KPI, compliance та план запуску." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #111a2b;
+      --surface: rgba(255,255,255,0.04);
+      --surface-strong: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.08);
+      --text: #f4f7fb;
+      --muted: #9ba8bf;
+      --muted-2: #7f8aa1;
+      --brand: #87a6ff;
+      --brand-strong: #6d90ff;
+      --accent: #79e0cc;
+      --success: #86d6a1;
+      --danger: #ff8e8e;
+      --shadow: 0 16px 50px rgba(0,0,0,.28);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(135,166,255,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(121,224,204,.08), transparent 22%),
+        linear-gradient(180deg, #09111e 0%, #0d1524 45%, #0f1728 100%);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(10,16,29,.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #dbe6ff;
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      box-shadow: 0 0 28px rgba(135,166,255,.65);
+      flex: 0 0 auto;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      transition: .2s ease;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.07);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 12px 30px rgba(109,144,255,.25);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #94b1ff, #7597ff);
+    }
+
+    .hero {
+      padding: 74px 0 44px;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(121,224,204,.55);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0 0 14px;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(36px, 5.4vw, 64px);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.2vw, 40px);
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    .lead {
+      max-width: 820px;
+      font-size: 18px;
+      color: #c4d0e6;
+    }
+
+    .owner-note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-side {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .stat b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    main {
+      padding-bottom: 20px;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-head {
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-2,
+    .grid-3,
+    .kpi-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .kpi-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p:last-child,
+    .card ul:last-child,
+    .card ol:last-child,
+    .card .codebox:last-child {
+      margin-bottom: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .good { color: var(--success); }
+    .bad { color: var(--danger); }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: #d7e0f1;
+    }
+
+    .list li {
+      margin: 10px 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(135,166,255,.09);
+      border: 1px solid rgba(135,166,255,.18);
+      color: #d7e4ff;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .quote {
+      padding: 22px 24px;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: rgba(121,224,204,.06);
+      color: #defcf4;
+      font-size: 17px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 8px;
+      width: 2px;
+      background: rgba(255,255,255,.10);
+    }
+
+    .step {
+      position: relative;
+      padding: 0 0 18px 18px;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: -1px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      box-shadow: 0 0 0 5px rgba(135,166,255,.10);
+    }
+
+    .step small {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .stage-title {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .table-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      background: transparent;
+    }
+
+    th, td {
+      padding: 16px 18px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    th {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #dce6fb;
+      background: rgba(255,255,255,.04);
+    }
+
+    td {
+      color: #d4def0;
+    }
+
+    .codebox {
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(5,10,19,.62);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #dbe4f4;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow: auto;
+    }
+
+    .kpi-card b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    .contact-section {
+      padding: 34px 0 70px;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 20px;
+      align-items: center;
+      padding: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(135,166,255,.10), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(121,224,204,.08);
+      border: 1px solid rgba(121,224,204,.16);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .contact-copy p {
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .contact-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    footer {
+      padding: 0 0 34px;
+      color: var(--muted-2);
+      font-size: 14px;
+    }
+
+    .footer-line {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-shell,
+      .kpi-grid,
+      .contact-card,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .pill-row {
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Shopify Email Funnel Strategy
+      </div>
+      <div class="topbar-actions">
+        <a class="btn btn-primary" href="https://t.me/Mak_sy_ym" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn" href="https://www.instagram.com/maksym.scale/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-shell">
+      <div class="panel hero-main">
+        <div class="eyebrow">Email Marketing • Shopify • EU + USA</div>
+        <h1>Стратегія email-воронки для Shopify брендів на ринок Європи та США</h1>
+        <p class="lead">
+          Це не просто набір листів. Це системна модель, яка переводить людину від першого дотику до повторної покупки, підвищує конверсію, повертає частину втрачених замовлень, підсилює LTV і дозволяє бренду заробляти на власній базі, а не тільки на платному трафіку.
+        </p>
+
+        <div class="owner-note">
+          <b>Автор і власник стратегії:</b> Maksym.<br />
+          Для співпраці пишіть у
+          <a href="https://t.me/Mak_sy_ym" target="_blank" rel="noopener" style="color:#dce6ff;">Telegram</a>
+          або
+          <a href="https://www.instagram.com/maksym.scale/" target="_blank" rel="noopener" style="color:#dce6ff;">Instagram</a>.
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://t.me/Mak_sy_ym" target="_blank" rel="noopener">Написати в Telegram</a>
+          <a class="btn" href="https://www.instagram.com/maksym.scale/" target="_blank" rel="noopener">Написати в Instagram</a>
+          <a class="btn" href="#plan">План запуску</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill">🛒 Shopify-first підхід</span>
+          <span class="pill">🌍 Адаптовано під EU та USA</span>
+          <span class="pill">📩 Welcome, cart, post-purchase, win-back</span>
+          <span class="pill">⚖️ GDPR / PECR / CAN-SPAM</span>
+        </div>
+      </div>
+
+      <aside class="panel hero-side">
+        <div class="stat">
+          <b>70.22%</b>
+          <span>Середній документований рівень покинутих кошиків в ecommerce — це головна причина, чому cart / checkout recovery має бути одним із базових флоу.</span>
+        </div>
+        <div class="stat">
+          <b>9</b>
+          <span>Ключових автоматизованих email-кампаній Shopify-рівня формують основу для growth-моделі бренду: welcome, browse, cart, post-purchase, win-back та інші.</span>
+        </div>
+        <div class="stat">
+          <b>10 хв</b>
+          <span>Критичне вікно після початку checkout, коли recovery-логіка може напряму впливати на повернення втраченого доходу.</span>
+        </div>
+        <div class="stat">
+          <b>Deliverability</b>
+          <span>Брендований sender, SPF / DKIM / DMARC і коректна інфраструктура — це фундамент стабільної доставки листів, а не технічна дрібниця.</span>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="why">
+      <div class="section-head">
+        <h2>Навіщо бізнесу email-воронка</h2>
+        <p>Як пояснювати цінність email-маркетингу власнику бренду, growth-команді або засновнику ecommerce-проєкту.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>1. Повертає втрачені гроші</h3>
+          <p class="muted">Люди відкладають рішення, сумніваються, відволікаються або не завершують оплату. Воронка повертає їх у момент, коли намір уже був, але покупка не відбулася.</p>
+        </article>
+        <article class="card">
+          <h3>2. Знижує залежність від реклами</h3>
+          <p class="muted">Email-база — це власний актив бренду. Вона працює повторно через welcome, nurture, replenishment і win-back, а не вимагає постійно купувати кожен наступний дотик.</p>
+        </article>
+        <article class="card">
+          <h3>3. Підвищує конверсію по всьому циклу</h3>
+          <p class="muted">Email не тільки продає. Він знімає заперечення, підсилює довіру, навчає користуванню продуктом, стимулює повторні покупки та збільшує LTV.</p>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Ключова маркетингова ідея</h3>
+        <p class="quote">
+          Сильна email-воронка — це не “розсилка з акціями”. Це прибуткова система контактів, де кожен лист має конкретну роль: зацікавити, кваліфікувати, повернути, зняти заперечення, довести до покупки й повернути клієнта вдруге.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Плюси та ризики</h2>
+        <p>Щоб стратегія виглядала професійно, важливо показувати не лише потенціал, а й обмеження.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3 class="good">Плюси</h3>
+          <ul class="list">
+            <li>Працює 24/7 через автоматику, а не вручну.</li>
+            <li>Монетизує вже наявний трафік без постійного росту ad spend.</li>
+            <li>Підсилює довіру через reviews, UGC, founder story, FAQ.</li>
+            <li>Дає сегментацію: нові ліди, first-time buyers, repeat buyers, VIP, dormants.</li>
+            <li>Дозволяє опиратися на конкретні KPI, а не на “відчуття”.</li>
+            <li>Масштабується на США та Європу з локалізацією мови, оферів і правил consent.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="bad">Мінуси / ризики</h3>
+          <ul class="list">
+            <li>Погана гігієна бази та слабка deliverability знищують результат навіть із хорошим copy.</li>
+            <li>Без сегментації листи швидко стають шумом і росте unsubscribe rate.</li>
+            <li>Постійні знижки привчають аудиторію чекати лише discount.</li>
+            <li>Для Європи критично важливі consent, privacy та discipline у direct marketing.</li>
+            <li>Воронка не компенсує слабкий продукт, поганий offer або проблемний checkout.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Правила для ринку США та Європи</h2>
+        <p>Одна з ключових частин, яка відрізняє професійну стратегію від простої серії листів.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>США: CAN-SPAM</h3>
+          <p class="muted">Комерційні листи мають містити правдивий sender, чесний subject line, зрозумілу ідентифікацію повідомлення, фізичну адресу бренду та простий unsubscribe.</p>
+        </article>
+        <article class="card">
+          <h3>UK / Europe: GDPR + PECR</h3>
+          <p class="muted">Для ринку Європи та Британії ключовими стають consent design, логіка збору підписки, право на opt-out і прозора privacy-комунікація.</p>
+        </article>
+        <article class="card">
+          <h3>Практичний висновок</h3>
+          <p class="muted">Для US фокус — speed-to-purchase і deliverability. Для EU/UK — permission-based architecture, акуратна сегментація та юридична чистота direct marketing.</p>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Рекомендація для growth-моделі</h3>
+        <ul class="list">
+          <li><b>US logic:</b> сильніший capture, чіткіший offer, швидший перехід до покупки.</li>
+          <li><b>EU / UK logic:</b> більш акуратний tone of permission, зрозумілий consent і м’якша частота комунікації.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="map">
+      <div class="section-head">
+        <h2>Карта всієї воронки</h2>
+        <p>Типова lifecycle-модель, яку доцільно реалізувати в Shopify-first стеку.</p>
+      </div>
+
+      <div class="card timeline">
+        <div class="step">
+          <small>Stage 01</small>
+          <h3 class="stage-title">Capture</h3>
+          <p>Людина вперше потрапляє на сайт. Завдання — не просто зібрати email, а обміняти permission на реальну цінність: welcome offer, early access, guide, free shipping hint або quiz.</p>
+        </div>
+        <div class="step">
+          <small>Stage 02</small>
+          <h3 class="stage-title">Welcome / Nurture</h3>
+          <p>Новий підписник має швидко зрозуміти, хто ви, чим відрізняється бренд, чому вам можна довіряти і який продукт купити першим.</p>
+        </div>
+        <div class="step">
+          <small>Stage 03</small>
+          <h3 class="stage-title">Browse / Intent</h3>
+          <p>Якщо людина переглянула категорію або продукт, але не купила, запускається follow-up із нагадуванням, benefit-блоками, reviews та FAQ.</p>
+        </div>
+        <div class="step">
+          <small>Stage 04</small>
+          <h3 class="stage-title">Cart / Checkout Recovery</h3>
+          <p>Коли людина дійшла до кошика або checkout, це найтепліша фаза наміру. Саме тут email найчастіше повертає прямий дохід.</p>
+        </div>
+        <div class="step">
+          <small>Stage 05</small>
+          <h3 class="stage-title">First Purchase → Post-Purchase</h3>
+          <p>Після покупки комунікація не повинна зупинятися. Тут важливі confirmation, education, usage tips, cross-sell, review request і loyalty-логіка.</p>
+        </div>
+        <div class="step">
+          <small>Stage 06</small>
+          <h3 class="stage-title">Retention / Replenishment / Win-back</h3>
+          <p>Клієнта потрібно повертати через цикл споживання, нові колекції, сезонні офери, back-in-stock і reactivation-сценарії.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="flows">
+      <div class="section-head">
+        <h2>Які флоу запускати в першу чергу</h2>
+        <p>Для Shopify-брендів це не “опція”, а операційний мінімум, який напряму впливає на revenue.</p>
+      </div>
+
+      <div class="card table-card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Флоу</th>
+                <th>Коли тригериться</th>
+                <th>Ціль</th>
+                <th>Що комунікувати</th>
+                <th>Офер</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Welcome Series</b></td>
+                <td>Після підписки</td>
+                <td>Конвертувати новий lead у першу покупку</td>
+                <td>Brand story, hero products, trust, social proof, FAQ</td>
+                <td>5–15% / free shipping / bonus guide</td>
+              </tr>
+              <tr>
+                <td><b>Browse Abandonment</b></td>
+                <td>Перегляд продукту без add-to-cart</td>
+                <td>Повернути інтерес</td>
+                <td>Benefits, objections, reviews, reminder</td>
+                <td>Зазвичай без discount у першому дотику</td>
+              </tr>
+              <tr>
+                <td><b>Cart Abandonment</b></td>
+                <td>Add-to-cart без checkout</td>
+                <td>Повернути в кошик</td>
+                <td>Товар, причина діяти зараз, легка терміновість</td>
+                <td>Іноді на 2–3 листі</td>
+              </tr>
+              <tr>
+                <td><b>Checkout Abandonment</b></td>
+                <td>Почав checkout, але не оплатив</td>
+                <td>Дотиснути максимально теплий намір</td>
+                <td>Reminder, trust, payment/shipping FAQ, testimonials</td>
+                <td>Точковий incentive за потреби</td>
+              </tr>
+              <tr>
+                <td><b>Post-Purchase</b></td>
+                <td>Після покупки</td>
+                <td>Підняти repeat purchase і зменшити friction</td>
+                <td>Thank you, next steps, tips, related products</td>
+                <td>Cross-sell / loyalty / subscribe & save</td>
+              </tr>
+              <tr>
+                <td><b>Review / UGC</b></td>
+                <td>Після доставки</td>
+                <td>Зібрати social proof</td>
+                <td>Request review, photo review, referral</td>
+                <td>Points / gift card / access</td>
+              </tr>
+              <tr>
+                <td><b>Win-back</b></td>
+                <td>30 / 60 / 90+ днів без покупки</td>
+                <td>Реактивувати клієнта</td>
+                <td>What’s new, bestsellers, return offer</td>
+                <td>Персоналізований incentive</td>
+              </tr>
+              <tr>
+                <td><b>Back-in-stock / Price Drop</b></td>
+                <td>Товар повернувся або подешевшав</td>
+                <td>Монетизувати високий намір</td>
+                <td>Short direct email, urgency, availability</td>
+                <td>Не завжди потрібен</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Рекомендована логіка Welcome Series</h2>
+        <p>Перша автоматизована серія, яку варто запускати майже для будь-якого Shopify-магазину.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Email 1 — одразу</h3>
+          <p><b>Задача:</b> віддати promised value і зафіксувати перший мотив купити.</p>
+          <ul class="list">
+            <li>Welcome offer</li>
+            <li>1–3 hero products</li>
+            <li>Перший чіткий CTA</li>
+            <li>Простий старт без зайвого шуму</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Email 2 — через 1 день</h3>
+          <p><b>Задача:</b> побудувати довіру.</p>
+          <ul class="list">
+            <li>Founder story / brand angle</li>
+            <li>Чому продукт працює</li>
+            <li>Для кого він підходить</li>
+            <li>Reviews / social proof</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Email 3 — через 2–3 дні</h3>
+          <p><b>Задача:</b> зняти заперечення та підштовхнути до дії.</p>
+          <ul class="list">
+            <li>FAQ</li>
+            <li>Use-case підбірка</li>
+            <li>М’яка терміновість по offer</li>
+            <li>CTA на покупку</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Логіка Cart / Checkout Recovery</h2>
+        <p>Один із найприбутковіших сегментів email-маркетингу, тому що працює з уже сформованим наміром.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Email 1 — 30–60 хв</h3>
+          <p><b>Мета:</b> просто повернути назад у checkout.</p>
+          <ul class="list">
+            <li>Фото товару</li>
+            <li>Короткий reminder</li>
+            <li>Один CTA</li>
+            <li>Без зайвої знижки</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Email 2 — 24–48 год</h3>
+          <p><b>Мета:</b> зняти сумніви.</p>
+          <ul class="list">
+            <li>Reviews / UGC</li>
+            <li>Shipping / returns / sizing FAQ</li>
+            <li>Trust elements</li>
+            <li>Benefit-based messaging</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Email 3 — 48–72 год</h3>
+          <p><b>Мета:</b> дати останній мотив завершити покупку.</p>
+          <ul class="list">
+            <li>Light urgency</li>
+            <li>Обмежений offer</li>
+            <li>Чіткий CTA</li>
+            <li>Без зловживання discount logic</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Що саме потрібно зробити в Shopify</h2>
+        <p>Технічна база, без якої навіть сильний copy і хороший offer не дадуть стабільного результату.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Базова інфраструктура</h3>
+          <ul class="list">
+            <li>Підключити branded sender email на власному домені.</li>
+            <li>Налаштувати SPF / DKIM / DMARC.</li>
+            <li>Не використовувати no-reply sender.</li>
+            <li>Привести footer до compliance: адреса, unsubscribe, contact details, privacy.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Події та сегменти</h3>
+          <ul class="list">
+            <li>Subscribed but not purchased</li>
+            <li>Viewed product but not added to cart</li>
+            <li>Added to cart but no checkout</li>
+            <li>Started checkout but no purchase</li>
+            <li>First-time customer / repeat customer / VIP</li>
+            <li>Inactive 30 / 60 / 90 / 120 days</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="copy">
+      <div class="section-head">
+        <h2>Приклади хуків, тем і готових текстів</h2>
+        <p>База, яку можна адаптувати під fashion, beauty, home, supplements, accessories, wellness та інші DTC-напрямки.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Теми листів / Subject lines</h3>
+          <ul class="list">
+            <li>Ласкаво просимо — ось ваш бонус на перше замовлення</li>
+            <li>Почніть із наших бестселерів</li>
+            <li>Чому клієнти повертаються до нас знову</li>
+            <li>Ви щось залишили в кошику</li>
+            <li>Ваш checkout майже завершений</li>
+            <li>Ще думаєте? Ось що варто знати перед покупкою</li>
+            <li>Ваш товар знову в наявності</li>
+            <li>Ми сумуємо — ось спеціальна пропозиція для повернення</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Hook-формули</h3>
+          <ul class="list">
+            <li><b>Benefit hook:</b> “Менше хаосу вранці. Більше результату за 5 хвилин.”</li>
+            <li><b>Identity hook:</b> “Для людей, які хочуть якість без зайвого шуму.”</li>
+            <li><b>Proof hook:</b> “Один із найчастіше повторно купованих продуктів у лінійці.”</li>
+            <li><b>Friction-removal hook:</b> “Без складних налаштувань. Без зайвих кроків. Просто працює.”</li>
+            <li><b>Urgency hook:</b> “Ваш welcome bonus діє ще недовго.”</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Приклад Welcome Email №1</h3>
+        <div class="codebox">Тема: Ласкаво просимо — ось ваш бонус на перше замовлення
+
+Прехедер: Почніть із продуктів, які клієнти обирають найчастіше.
+
+Привіт!
+Дякуємо, що приєдналися до нас.
+
+На знак знайомства даруємо вам [WELCOME10] на перше замовлення.
+
+Якщо ви тільки знайомитесь із брендом, радимо почати з цих продуктів:
+— Bestseller #1
+— Bestseller #2
+— Bestseller #3
+
+Чому нас обирають:
+• продуманий продукт без зайвого шуму
+• швидка доставка
+• просте повернення
+• реальні відгуки клієнтів
+
+Кнопка: Використати бонус</div>
+      </div>
+
+      <div class="grid-2" style="margin-top:18px;">
+        <article class="card">
+          <h3>Приклад Cart Recovery</h3>
+          <div class="codebox">Тема: Ви залишили дещо в кошику
+
+Прехедер: Ми зберегли ваш вибір.
+
+Схоже, ви були зовсім близько.
+Ось товари, які ви додали до кошика.
+
+Якщо щось зупинило вас на останньому кроці:
+• швидка доставка
+• просте повернення
+• безпечна оплата
+
+Кнопка: Повернутися до кошика</div>
+        </article>
+
+        <article class="card">
+          <h3>Приклад Checkout Recovery</h3>
+          <div class="codebox">Тема: Ваше замовлення майже оформлене
+
+Прехедер: Поверніться та завершіть покупку за 1 хвилину.
+
+Ви вже майже завершили оформлення.
+Ми зберегли ваше замовлення, тож ви можете повернутися без повторного введення даних.
+
+Потрібно швидко перевірити деталі?
+• доставка: 2–5 робочих днів
+• повернення: 14/30 днів залежно від ринку
+• support: відповідаємо на email
+
+Кнопка: Завершити замовлення</div>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Приклад Win-back Email</h3>
+        <div class="codebox">Тема: Давно не бачились — ось привід повернутися
+
+Прехедер: Ми підготували дещо спеціальне для вас.
+
+Привіт!
+Ми помітили, що ви давно не заходили до нас.
+За цей час ми оновили добірку продуктів, які можуть вам сподобатися.
+
+Щоб повернення було ще приємнішим, ось персональна пропозиція:
+[BACK15]
+
+Кнопка: Повернутися до магазину</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Як зробити email, який хочеться відкрити і прочитати</h2>
+        <p>Тут виграє не тільки офер, а й структура повідомлення.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>1. Починати з інтересу</h3>
+          <p class="muted">Benefit, identity або curiosity часто працюють сильніше, ніж миттєва знижка на першому екрані.</p>
+        </article>
+        <article class="card">
+          <h3>2. Один лист — одна дія</h3>
+          <p class="muted">Коли в одному листі занадто багато CTA, людина часто не робить жодного. У кожного листа має бути одна головна ціль.</p>
+        </article>
+        <article class="card">
+          <h3>3. Менше шуму зверху</h3>
+          <p class="muted">Перший екран листа має відповідати на три питання: що це, чому це важливо для мене, що робити далі.</p>
+        </article>
+      </div>
+
+      <div class="grid-3" style="margin-top:18px;">
+        <article class="card">
+          <h3>4. Соціальний доказ</h3>
+          <p class="muted">Review snippet, UGC, media mention, кількість покупців, rating або коротка цитата суттєво знижують сумнів.</p>
+        </article>
+        <article class="card">
+          <h3>5. Працювати із запереченнями</h3>
+          <p class="muted">Доставка, повернення, гарантія, якість, склад, спосіб використання — це потрібно вбудовувати у серії, а не ховати десь у footer.</p>
+        </article>
+        <article class="card">
+          <h3>6. Сегментація важливіша за частоту</h3>
+          <p class="muted">Менше листів правильним людям майже завжди працює краще, ніж більше листів усім підряд.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kpi">
+      <div class="section-head">
+        <h2>KPI, які потрібно показувати клієнту</h2>
+        <p>Продавати email-воронку тільки через open rate — слабка позиція. Потрібен бізнесовий погляд.</p>
+      </div>
+
+      <div class="kpi-grid">
+        <article class="card kpi-card">
+          <b>Placed Order Rate</b>
+          <span class="muted">Скільки отримувачів реально купили</span>
+        </article>
+        <article class="card kpi-card">
+          <b>Revenue per Recipient</b>
+          <span class="muted">Скільки грошей приносить один отримувач</span>
+        </article>
+        <article class="card kpi-card">
+          <b>Flow Revenue Share</b>
+          <span class="muted">Яку частку revenue дають automation-флоу</span>
+        </article>
+        <article class="card kpi-card">
+          <b>Repeat Purchase Rate</b>
+          <span class="muted">Наскільки добре працює retention</span>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Що відстежувати окремо</h3>
+        <ul class="list">
+          <li><b>Welcome:</b> signup rate, first-order conversion, revenue per new subscriber.</li>
+          <li><b>Cart / Checkout:</b> recovered revenue, recovered checkout rate, discount dependency.</li>
+          <li><b>Post-purchase:</b> 2nd purchase window, review rate, cross-sell conversion.</li>
+          <li><b>Win-back:</b> reactivation rate, unsubscribe rate, margin after incentive.</li>
+          <li><b>Deliverability:</b> bounce, spam complaints, reputation, inbox placement.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="plan">
+      <div class="section-head">
+        <h2>Покроковий план запуску на 30 днів</h2>
+        <p>Практичний roadmap, який можна брати в роботу або вставляти в комерційну пропозицію.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Тиждень 1 — аудит і фундамент</h3>
+          <ul class="list">
+            <li>Аудит Shopify store, трафіку, конверсії, checkout friction і поточної email-інфраструктури.</li>
+            <li>Перевірка sender domain, SPF / DKIM / DMARC, footer compliance.</li>
+            <li>Сегментація аудиторії та визначення lifecycle stages.</li>
+            <li>Формування core offer: first purchase, free shipping, bundle, quiz, consultation.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Тиждень 2 — capture + welcome</h3>
+          <ul class="list">
+            <li>Запуск pop-up / embed forms під різні ринки.</li>
+            <li>Окремі меседжі для US та EU / UK за потреби.</li>
+            <li>Створення 3-email welcome series.</li>
+            <li>Додавання featured products, trust blocks і FAQ.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Тиждень 3 — recovery flows</h3>
+          <ul class="list">
+            <li>Browse abandonment.</li>
+            <li>Cart abandonment.</li>
+            <li>Checkout abandonment.</li>
+            <li>Тестування timing, CTA, offer, subject line і objections.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Тиждень 4 — retention</h3>
+          <ul class="list">
+            <li>Post-purchase серія.</li>
+            <li>Review / UGC request.</li>
+            <li>Win-back 30 / 60 / 90 days.</li>
+            <li>Dashboard і щотижневий review по KPI.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Що говорити клієнту або аудиторії в Instagram / Telegram</h2>
+        <p>Готова подача експертизи для контенту, консультацій і продажу послуги.</p>
+      </div>
+
+      <div class="card">
+        <div class="codebox">Email-воронка для Shopify — це не просто розсилка, а система, яка допомагає заробляти на трафіку, який бренд уже залучає.
+
+Вона дозволяє:
+— повертати частину покинутих кошиків і checkout
+— конвертувати нових підписників у першу покупку
+— підвищувати повторні продажі
+— зменшувати залежність від платної реклами
+— будувати сильнішу довіру до бренду
+
+Для США та Європи критично важливо не тільки “продавати”, а й грамотно побудувати consent, compliance і deliverability. Саме тому сильна email-стратегія — це одночасно маркетинг, операційна дисципліна і прибутковий актив бренду.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Висновок</h2>
+        <p>Якщо звести все до однієї бізнес-тези.</p>
+      </div>
+
+      <div class="card">
+        <p>
+          Для Shopify-бренду на ринок США та Європи email-воронка — це один із найприбутковіших каналів після paid acquisition, тому що вона монетизує вже наявний попит, підсилює першу покупку, повертає покинуті checkout-и, підтримує клієнта після замовлення і збільшує повторні продажі. Найкращий результат дає не хаотична розсилка, а повна lifecycle-система: capture → welcome → browse → cart / checkout recovery → post-purchase → retention → win-back.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="card contact-card">
+        <div class="contact-copy">
+          <div class="contact-badge">Співпраця</div>
+          <h2>Потрібна стратегія, аудит або запуск email-маркетингу для Shopify?</h2>
+          <p>
+            Якщо вам потрібна структура email-воронки, аудит поточних флоу, стратегія під США / Європу або підготовка до впровадження — напишіть напряму. Можемо обговорити формат співпраці, задачі та точки росту для бренду.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://t.me/Mak_sy_ym" target="_blank" rel="noopener">Написати в Telegram</a>
+          <a class="btn" href="https://www.instagram.com/maksym.scale/" target="_blank" rel="noopener">Написати в Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-line">
+      <span>Shopify Email Funnel Strategy</span>
+      <span>Maksym — Telegram / Instagram for collaboration</span>
+    </div>
+  </footer>
+</body>
+</html>
